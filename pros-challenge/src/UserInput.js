@@ -161,7 +161,7 @@ class UserInput extends React.Component {
       // axios.get("https://www.google.fr/flights#flt=/m/03l2n./m/02_286.2018-11-28;c:USD;e:1;sd:1;t:f;tt:o").then((info) => {
       //   console.log(info);
       // })
-      console.log(this.state.departureFrom, this.state.arrivalTo, this.state.date)
+      console.log("IMPORTANT", this.state.departureFrom, this.state.arrivalTo, this.state.date)
       event.preventDefault();
     }
 
