@@ -3,6 +3,17 @@ import { GeoSearch, Marker } from 'react-instantsearch-dom-maps'
 
 class Geo extends Component {
   InfoWindow = new this.props.google.maps.InfoWindow()
+  
+  onClickMarker = ({ hit, marker }) => {
+    if (this.InfoWindow.getMap()) this.InfoWindow.close()
+    this.InfoWindow.setContent(
+      `${hit.name} - ${hit.name === hit.city ? '' : `${hit.city}, `}${
+        hit.country
+      }<br>${hit.nb_airline_liaisons} liaisons`
+    )
+    this.InfoWindow.open(marker.getMap(), marker)
+  }
+
 
   render() {
     const { google } = this.props

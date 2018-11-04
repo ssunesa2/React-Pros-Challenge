@@ -3,9 +3,12 @@ import './App.css';
 import { InstantSearch, Configure, SearchBox } from 'react-instantsearch-dom'
 import { GoogleMapsLoader } from 'react-instantsearch-dom-maps'
 import Geo from './Geo'
-
+import UserInput from './UserInput'
+  
 
 class App extends Component {
+
+
   render() {
     return (
       <InstantSearch
@@ -19,18 +22,34 @@ class App extends Component {
           aroundLatLngViaIP
           typoTolerance="min"
         />
-      <main className="search-container">
-          <div className="right-panel">
-            <div id="map">
-              {/* Uncomment the following widget to add a map */}
-              {<div style={{ height: '100%' }}>
-                <GoogleMapsLoader apiKey="AIzaSyBawL8VbstJDdU5397SUX7pEt9DslAwWgQ">
-                  {google => <Geo google={google} />}
-                </GoogleMapsLoader>
-              </div> }
+        <div id = "head">
+        <header> Minimialized Costs </header>
+        </div>
+        <div id="searchbox">
+              {/* Uncomment the following widget to add a search bar */}
+              {<SearchBox
+                translations={{
+                  placeholder: 'Search airports by name, city, airport code'
+                }}
+              /> }
             </div>
-            </div>
-        </main>
+        <main className="search-container">
+        <div className="right-panel">
+         <div id="map">
+            <br/>
+            {<div style={{ height: '100%' }}>
+              <GoogleMapsLoader apiKey="AIzaSyBawL8VbstJDdU5397SUX7pEt9DslAwWgQ">
+                {google => <Geo google={google} />}
+              </GoogleMapsLoader>
+            </div> }
+          </div>
+          </div>
+     </main> 
+     <div id ="search">
+     <UserInput/>
+     </div>
+
+
       </InstantSearch>
     );
   }
