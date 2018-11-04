@@ -7,7 +7,21 @@ import UserInput from './UserInput'
   
 
 class App extends Component {
+constructor(props) {
+  super(props);
+  this.state = {
+    name : ''
+  };
 
+  this.changeInfo = this.changeInfo.bind(this);
+}
+changeInfo(newName)
+{
+  console.log(newName)
+this.setState({
+  name: newName
+})
+}
 
   render() {
     return (
@@ -26,27 +40,26 @@ class App extends Component {
         <header> Minimialized Costs </header>
         </div>
         <div id="searchbox">
-              {/* Uncomment the following widget to add a search bar */}
               {<SearchBox
                 translations={{
                   placeholder: 'Search airports by name, city, airport code'
                 }}
               /> }
-            </div>
+          </div>
         <main className="search-container">
         <div className="right-panel">
          <div id="map">
             <br/>
             {<div style={{ height: '100%' }}>
               <GoogleMapsLoader apiKey="AIzaSyBawL8VbstJDdU5397SUX7pEt9DslAwWgQ">
-                {google => <Geo google={google} />}
+                {google => <Geo change={this.changeInfo.bind(this)} google={google} />}
               </GoogleMapsLoader>
             </div> }
           </div>
           </div>
      </main> 
      <div id ="search">
-     <UserInput/>
+     <UserInput airport ={this.state.name}/>
      </div>
 
 

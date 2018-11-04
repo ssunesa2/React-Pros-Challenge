@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import Geo from './Geo'
+
 
 class UserInput extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {departureFrom: 'random', arrivalTo: '', date: ''};
+      this.state = {departureFrom: '', arrivalTo: '', date: ''};
   
       this.handleFromChange = this.handleFromChange.bind(this);
       this.handleToChange = this.handleToChange.bind(this);
       this.handleDateChange = this.handleDateChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleClickFromChange = this.handleClickFromChange.bind(this);
+      this.handleClickToChange = this.handleClickToChange.bind(this);
     }
   
     handleFromChange(event) {
@@ -24,18 +28,34 @@ class UserInput extends React.Component {
     }
   
     handleSubmit(event) {
+      // console.log(this.props.airport)
+      // console.log(this.props.airport)
       console.log(this.state.departureFrom, this.state.arrivalTo, this.state.date)
       event.preventDefault();
     }
+
+    handleChange(info){
+      this.setState({departureFrom: info});
+      console.log(info);
+    }
+
+    handleClickFromChange(name){
+      this.setState({departureFrom: this.props.airport});
+    }
   
+    handleClickToChange(name){
+      this.setState({arrivalTo: this.props.airport});
+    }
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
           <label>
             Departure From:
-            <input type="text" departureFrom={this.state.departureFrom} onChange={this.handleFromChange} />
+            <input type="text" value={this.state.departureFrom} departureFrom={this.state.departureFrom} onChange={this.handleFromChange} />
+            <button onClick = {this.handleClickFromChange}>Select the Above Airport</button>
              Arrival To:
-            <input type="text" arrivalTo={this.state.arrivalTo} onChange={this.handleToChange} />
+            <input type="text" value={this.state.arrivalTo} arrivalTo={this.state.arrivalTo} onChange={this.handleToChange} />
+            <button onClick = {this.handleClickToChange}>Select the Above Airport</button>
             <br />
             Trip Date:
             <input type="date" scheduleDate={this.state.scheduleDate} onChange={this.handleDateChange} />
@@ -48,23 +68,3 @@ class UserInput extends React.Component {
   }
 
   export default UserInput;
-
-//   <form>
-//   <label>
-//     <input
-//       name="Departure From"
-//       type="name"
-//       checked={this.state.departureFrom}
-//       onChange={this.handleInputChange} />
-//   </label>
-//   <br />
-//   <label>
-//     Number of guests:
-//     <input
-//       name="Arrival To"
-//       type="name"
-//       value={this.state.arrivalTo}
-//       onChange={this.handleInputChange} />
-//   </label>
-//   <input type="submit" value="Submit" />
-// </form>
