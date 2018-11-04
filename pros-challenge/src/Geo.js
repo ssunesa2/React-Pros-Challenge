@@ -5,15 +5,23 @@ class Geo extends Component {
   InfoWindow = new this.props.google.maps.InfoWindow()
   
   onClickMarker = ({ hit, marker }) => {
+    
     if (this.InfoWindow.getMap()) this.InfoWindow.close()
     this.InfoWindow.setContent(
       `${hit.name} - ${hit.name === hit.city ? '' : `${hit.city}, `}${
         hit.country
-      }<br>${hit.nb_airline_liaisons} liaisons`
+      }<br>${hit.nb_airline_liaisons} liaisons <br> USE AIRPORT CODE: ${hit.airport_id}`
     )
+    console.log(hit)
+    this.handleSelect(hit)
     this.InfoWindow.open(marker.getMap(), marker)
   }
 
+  handleSelect(info){
+    console.log(info.airport_id);
+
+    this.props.change(info.airport_id);
+  }
 
   render() {
     const { google } = this.props
