@@ -1,7 +1,10 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-browser = webdriver.Chrome()
-browser.set_window_position(-2000, 0)
+options = Options()
+options.add_argument("--headless")
+options.add_argument("--disable-gpu")
+browser = webdriver.Chrome(".\\chromedriver.exe", options=options)
 
 depart = "HOU"
 arrive = "DFW"
