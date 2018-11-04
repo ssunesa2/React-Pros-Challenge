@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Geo from './Geo'
-
+import axios from './../node_modules/axios'
 
 class UserInput extends React.Component {
     constructor(props) {
@@ -30,6 +30,23 @@ class UserInput extends React.Component {
     handleSubmit(event) {
       // console.log(this.props.airport)
       // console.log(this.props.airport)
+       var invocation = new XMLHttpRequest();
+       var url = 'https://www.google.fr/flights#flt=/m/03l2n./m/02_286.2018-11-28;c:USD;e:1;sd:1;t:f;tt:o';
+      //  invocation.open('GET', url, true);
+      //  console.log(invocation)
+      fetch(url)
+      .then(response => response.json())
+      .then(parsedJSON => console.log(parsedJSON.results))
+      .catch(error => console.log('parsing failed', error))
+
+      //    axios.get('https://www.google.fr/flights#flt=/m/03l2n./m/02_286.2018-11-28;c:USD;e:1;sd:1;t:f;tt:o').then((info) => {
+      //        console.log(info);
+      //      }).catch(function(error) {
+      //   console.error(error)
+      // });
+      // axios.get("https://www.google.fr/flights#flt=/m/03l2n./m/02_286.2018-11-28;c:USD;e:1;sd:1;t:f;tt:o").then((info) => {
+      //   console.log(info);
+      // })
       console.log(this.state.departureFrom, this.state.arrivalTo, this.state.date)
       event.preventDefault();
     }
