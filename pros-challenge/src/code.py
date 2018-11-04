@@ -1,32 +1,30 @@
-import os
-import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+# enable browser logging
+d = DesiredCapabilities.CHROME
+d['loggingPrefs'] = { 'browser':'ALL' }
 options = Options()
 options.add_argument("--headless")
 options.add_argument("--disable-gpu")
 browser = webdriver.Chrome("C:\\Users\\vedan\\Desktop\\React-Pros-Challenge\\pros-challenge\\src\\chromedriver.exe", options=options)
-site = webdriver.Chrome("C:\\Users\\vedan\\Desktop\\React-Pros-Challenge\\pros-challenge\\src\\chromedriver.exe", options=options)
-while not os.path.exists("data.txt"):
-	time.sleep(1)
+site = webdriver.Chrome(desired_capabilities=d)
 
-f=open("data.txt", "r")
-depart = f.readline()
-arrive = f.readline()
-depDateYMD = f.readline()
-f.close()
-
-os.remove("data.txt")
-
-
-browser.get("https://www.google.com/flights#flt="+depart+"."+arrive+"."+depDateYMD+";c:USD;e:1;sd:1;t:f;tt:o")
 site.get("localhost:3000")
 
-for entry in site.get_log('browser'):
-	print(entry)
+split = []
+while len(split) == 0:
+	entry = site.get_log('browser')
+	if entry.text.index("IMPORTANT VARIABLE") != -1 and entry.text.index("20") != -1:
+		split = entry.text.split(" ")
 
-browser.implicitly_wait(4)
+depart = split[2]
+arrive = split[3]
+depDateYMD = split[4]
+
+browser.get("https://www.google.com/flights#flt="+depart+"."+arrive+"."+depDateYMD+";c:USD;e:1;sd:1;t:f;tt:o")
+
+browser.implicitly_wait(2)
 nav = browser.find_element_by_class_name("gws-flights-results__best-flights")
 
 #print(nav.text)
@@ -41,16 +39,13 @@ lines = nav.text.splitlines()
 # 		index += 8
 o=open("flights.txt", "w+")
 o.write("Time\tAirline\tDuration\tAirports\tCost\n")
-index = 3
 
-count = 0
 
 for array in lines:
 	if "Operated" in array:
 		del lines[lines.index(array)]
 
-len(lines)
-
+index = 3
 while index+5 < len(lines):
 	o.write(lines[index]+"---" +lines[index+1]+"---" +lines[index+2]+"---"+ lines[index+3]+"---"+ lines[index+5]+"\n")
 	#print(lines[index]+"\t" +lines[index+1]+"\t" +lines[index+2]+"\t"+ lines[index+3]+"\t"+ lines[index+5]+"\n")
