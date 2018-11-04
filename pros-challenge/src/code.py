@@ -2,12 +2,19 @@ import os
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+d = DesiredCapabilities.CHROME
+d['loggingPrefs'] = { 'browser': 'ALL' }
+
+
 
 options = Options()
 options.add_argument("--headless")
 options.add_argument("--disable-gpu")
 browser = webdriver.Chrome("C:\\Users\\vedan\\Desktop\\React-Pros-Challenge\\pros-challenge\\src\\chromedriver.exe", options=options)
-site = webdriver.Chrome("C:\\Users\\vedan\\Desktop\\React-Pros-Challenge\\pros-challenge\\src\\chromedriver.exe", options=options)
+site = webdriver.Chrome("C:\\Users\\vedan\\Desktop\\React-Pros-Challenge\\pros-challenge\\src\\chromedriver.exe", options=options) 
+site = webdriver.Chrome(  desired_capabilities = d)
 while not os.path.exists("data.txt"):
 	time.sleep(1)
 
@@ -24,7 +31,9 @@ browser.get("https://www.google.com/flights#flt="+depart+"."+arrive+"."+depDateY
 site.get("localhost:3000")
 
 for entry in site.get_log('browser'):
-	print(entry)
+    if entry.text.index("IMPORTANT VARIABLE") != -1:
+        if entry.text.index(20) != -1:
+            print(entry)
 
 browser.implicitly_wait(4)
 nav = browser.find_element_by_class_name("gws-flights-results__best-flights")
