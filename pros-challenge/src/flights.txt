@@ -1,4 +1,4 @@
 Time	Airline	Duration	Airports	Cost
-5:02 AM – 6:19 AM---American---1h 17m---IAH–DFW---$297
-7:45 AM – 8:51 AM---United---1h 6m---IAH–DFW---$297
-12:00 PM – 1:08 PM---United---1h 8m---IAH–DFW---$297
+5:06 AM – 6:19 AM---American---1h 13m---IAH–DFW---$99
+12:41 PM – 1:56 PM---American---1h 15m---IAH–DFW---$99
+8:05 PM – 9:16 PM---United---1h 11m---IAH–DFW---$108
