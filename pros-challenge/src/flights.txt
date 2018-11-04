@@ -1,4 +1,5 @@
 Time	Airline	Duration	Airports	Cost
-5:06 AM – 6:19 AM---American---1h 13m---IAH–DFW---$99
-12:41 PM – 1:56 PM---American---1h 15m---IAH–DFW---$99
-8:05 PM – 9:16 PM---United---1h 11m---IAH–DFW---$108
+6:15 AM – 10:09 AM---Air Canada---2h 54m---DFW–YYZ---$219
+7:01 AM – 11:09 AM---American---3h 8m---DFW–YYZ---$219
+1:49 PM – 5:45 PM---American---2h 56m---DFW–YYZ---$219
+5:30 PM – 11:59 PM---United---5h 29m---DFW–YYZ---1h 5m IAH

@@ -1,20 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
 # enable browser logging
 d = DesiredCapabilities.CHROME
 d['loggingPrefs'] = { 'browser':'ALL' }
-
-
 options = Options()
 options.add_argument("--headless")
 options.add_argument("--disable-gpu")
 browser = webdriver.Chrome("C:\\Users\\vedan\\Desktop\\React-Pros-Challenge\\pros-challenge\\src\\chromedriver.exe", options=options)
 site = webdriver.Chrome(desired_capabilities=d)
-
-
-
 
 site.get("localhost:3000")
 
@@ -22,20 +16,27 @@ split = []
 while len(split) == 0:
 	entry = site.get_log('browser')
 	for log in entry:
-		print(log)
-		#if log.text.index("IMPORTANT VARIABLE") != -1 and entry.text.index(20) != -1:
-		#	split = entry.text.split(" ")
+		if "IMPORTANT" in str(log) and "2018" in str(log):
+			split = str(log).split(" ")
 
-depart = split[2]
-arrive = split[3]
-depDateYMD = split[4]
 
-browser.get("https://www.google.com/flights#flt="+depart+"."+arrive+"."+depDateYMD+";c:USD;e:1;sd:1;t:f;tt:o")
 
-browser.implicitly_wait(2)
+departxy = str(split[6]).replace('"','').replace("'", "").replace(',','')
+arrivexy = str(split[7]).replace('"','').replace("'", "").replace(',','')
+depDateYMD = str(split[8]).replace('"','').replace("'", "").replace(',','')
+#print(split[6].replace('"','').replace("'", "").replace(',',''))
+# print(split[7])
+
+uuuu = F"https://www.google.com/flights#flt={str(split[6])}.{str(split[7])}.{depDateYMD};c:USD;e:1;sd:1;t:f;tt:o"
+#print(uuuu)
+browser.get("https://www.google.com/flights#flt="+departxy+"."+arrivexy+"."+depDateYMD+";c:USD;e:1;sd:1;t:f;tt:o")
+
+#print(uuuu)
+#print(browser.current_url)
+#browser.implicitly_wait(2)
 nav = browser.find_element_by_class_name("gws-flights-results__best-flights")
 
-
+#print(nav.text)
 
 lines = nav.text.splitlines()
 # with open('flights.csv', 'w', newline='') as csvfile:
