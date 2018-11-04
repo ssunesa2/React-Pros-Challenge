@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 Time,Airline,Duration,Airports,Cost
 6:20 AM â€“ 7:15 AM+1,|Aeromexico, Delta, KLM|,18h 55m,PVRâ€“LCY,|$2,825|
 1:40 PM â€“ 4:35 PM+1,|Delta, KLM|,20h 55m,PVRâ€“LCY,|$2,825|
 1:40 PM â€“ 4:35 PM+1,|Delta, KLM|,20h 55m,PVRâ€“LCY,|$2,825|
+=======
+Time,Airline,Duration,Airports,Cost
+6:20 AM – 7:15 AM+1,|Aeromexico, Delta, KLM|,18h 55m,PVR–LCY,|$2,825|
+1:40 PM – 4:35 PM+1,|Delta, KLM|,20h 55m,PVR–LCY,|$2,825|
+1:40 PM – 4:35 PM+1,|Delta, KLM|,20h 55m,PVR–LCY,|$2,825|
+>>>>>>> 2b2009c979750b6de42df2a6e33ff468fc639ec3
