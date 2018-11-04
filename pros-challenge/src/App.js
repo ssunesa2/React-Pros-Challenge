@@ -4,17 +4,27 @@ import { InstantSearch, Configure, SearchBox } from 'react-instantsearch-dom'
 import { GoogleMapsLoader } from 'react-instantsearch-dom-maps'
 import Geo from './Geo'
 import UserInput from './UserInput'
-  
+// import TextFileReader from './TextFileReader'
+
+// var myTxt = require("./readmec.txt");
+
+
 
 class App extends Component {
 constructor(props) {
   super(props);
   this.state = {
     name : ''
+ //   isHidden : true
   };
-
   this.changeInfo = this.changeInfo.bind(this);
 }
+
+// toggleHidden () {
+//   this.setState({
+//     isHidden: !this.state.isHidden
+//   })
+// }
 changeInfo(newName)
 {
   console.log(newName)
@@ -61,8 +71,6 @@ this.setState({
      <div id ="search">
      <UserInput airport ={this.state.name}/>
      </div>
-
-
       </InstantSearch>
     );
   }
