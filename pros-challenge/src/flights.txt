@@ -1,3 +1,4 @@
 Time	Airline	Duration	Airports	Cost
-5:02 AM – 6:19 AM	American	IAH–DFW	Nonstop	7:45 AM – 8:51 AM
-Operated by Mesa Airlines DBA United Express	1h 6m	Nonstop	$297	United
+5:02 AM – 6:19 AM---American---1h 17m---IAH–DFW---$297
+7:45 AM – 8:51 AM---United---1h 6m---IAH–DFW---$297
+12:00 PM – 1:08 PM---United---1h 8m---IAH–DFW---$297
