@@ -51,10 +51,10 @@ class UserInput extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Departure From:
-            <input type="text" value={this.state.departureFrom} departureFrom={this.state.departureFrom} onChange={this.handleFromChange} />
+            <input type="text" placeholder="Airport Code" value={this.state.departureFrom} departureFrom={this.state.departureFrom} onChange={this.handleFromChange} />
             <button onClick = {this.handleClickFromChange}>Select the Above Airport</button>
              Arrival To:
-            <input type="text" value={this.state.arrivalTo} arrivalTo={this.state.arrivalTo} onChange={this.handleToChange} />
+            <input type="text" placeholder="Airport Code" value={this.state.arrivalTo} arrivalTo={this.state.arrivalTo} onChange={this.handleToChange} />
             <button onClick = {this.handleClickToChange}>Select the Above Airport</button>
             <br />
             Trip Date:
