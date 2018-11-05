@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 # enable browser logging
 d = DesiredCapabilities.CHROME
 d['loggingPrefs'] = { 'browser':'ALL' }
@@ -20,7 +21,7 @@ while len(split) == 0:
 			split = str(log).split(" ")
 
 
-
+browser.implicitly_wait(4)
 departxy = str(split[6]).replace('"','').replace("'", "").replace(',','')
 arrivexy = str(split[7]).replace('"','').replace("'", "").replace(',','')
 depDateYMD = str(split[8]).replace('"','').replace("'", "").replace(',','')

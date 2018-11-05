@@ -2,4 +2,5 @@ Time	Airline	Duration	Airports	Cost
 6:15 AM – 10:09 AM---Air Canada---2h 54m---DFW–YYZ---$219
 7:01 AM – 11:09 AM---American---3h 8m---DFW–YYZ---$219
 1:49 PM – 5:45 PM---American---2h 56m---DFW–YYZ---$219
-5:30 PM – 11:59 PM---United---5h 29m---DFW–YYZ---1h 5m IAH
+10:28 AM – 4:30 PM---American---5h 2m---DFW–YYZ---40m CLT
+$226---5:30 PM – 11:59 PM---United---5h 29m---1 stop
